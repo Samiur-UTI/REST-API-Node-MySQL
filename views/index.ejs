@@ -9,14 +9,13 @@
 </head>
 <body>
 <div>
-    <nav style="justify-content: center"  class="navbar navbar-dark bg-primary">
+    <nav style="justify-content: center"  class="navbar navbar-dark bg-dark">
         <span class="navbar-brand mb-0 h1">My Todo Lists</span>
     </nav>
     <div class="container">
-      <% console.log(data) %>
         <form action="/" id="prename-form" method="POST">
             <div class="form-group">
-              <label for="exampleInputEmail1">Enter Prename Here</label>
+              <label for="exampleInputEmail1">Enter Todo Here</label>
               <input name="prename" type="text" class="form-control" placeholder="Enter prename">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -24,23 +23,28 @@
         <table class="table table-dark">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
+                <th scope="col">Serial</th>
+                <th scope="col">Todos</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Update</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-              </tr>
+              <% data.forEach(item => { %>
+                <tr>
+                  <th scope="row"><%= item.id  %></th>
+                  <td><%= item.text  %></td>
+                  <td><button type="button" class="btn btn-danger">Delete</button></td>
+                  <td scope="row">
+                    <form>
+                      <div class="form-group">
+                        <input name="update" type="text" class="form-control" placeholder="Update Todo">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </td>
+                </tr>
+              <% }) %>
             </tbody>
           </table>
           
