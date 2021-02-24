@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/">
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Todos</title>
+</head>
+<body>
+<div>
+    <nav style="justify-content: center"  class="navbar navbar-dark bg-primary">
+        <span class="navbar-brand mb-0 h1">My Todo Lists</span>
+    </nav>
+    <div class="container">
+      <% console.log(data) %>
+        <form action="/" id="prename-form" method="POST">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Prename Here</label>
+              <input name="prename" type="text" class="form-control" placeholder="Enter prename">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+</body>
+</html>

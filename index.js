@@ -12,18 +12,12 @@ const connection = mysql.createConnection({
   password : "",
   database : "nodemysql"
 });
-// connection.query(q, [data] ,function(error,results,fields){
-//     if(error) throw error;
-//     console.log(results);
-// });
 app.get("/", function(req,res){
     const q = 'SELECT * FROM `todos`';
     const data = connection.query(q, (err,results,fields) => {
-      if(err) console.log(err);
-      return fields;
+      if(err) throw (err);
+      res.render("index", {data: results});
     })
-    console.log(data);
-    res.render("index");
 })
 app.post("/", async function(req,res){
     const data = await req.body.prename;
