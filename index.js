@@ -14,9 +14,9 @@ const connection = mysql.createConnection({
 });
 app.get("/", function(req,res){
     const q = 'SELECT * FROM `todos`';
-    const data = connection.query(q, (err,results,fields) => {
+    const data = connection.query(q, async (err,results,fields) => {
       if(err) throw (err);
-      res.render("index", {data: results});
+      res.render("index", {data: await results});
     })
 })
 app.post("/", async function(req,res){
@@ -28,11 +28,21 @@ app.post("/", async function(req,res){
     })
 })
 app.get("/:id/delete", function(req,res){
-  const _id = req.params.id;
-  const q = `DELETE FROM todos WHERE id = ${_id}`
-  connection.query(q, (err,results,fields) => {
-      if(err) throw (err);
-      res.redirect("/");
-  })
+    const _id = req.params.id;
+    const q = `DELETE FROM todos WHERE id = ${_id}`
+    connection.query(q, (err,results,fields) => {
+        if(err) throw (err);
+        res.redirect("/");
+    })
 })
+app.post("/:id/update", function(req,res){
+    const _id = req.params.id;
+    const data = JSON.stringify(req.body.update);
+    const q = `UPDATE todos SET text = ${data} WHERE id= ${_id}`;
+    connection.query(q, (err, results, fields) => {
+        if(err) throw (err);
+        res.redirect("/")
+    })
+})
+
 app.listen(3000, () => console.log("Server is running"));
