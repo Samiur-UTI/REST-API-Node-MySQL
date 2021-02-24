@@ -34,7 +34,11 @@
                 <tr>
                   <th scope="row"><%= item.id  %></th>
                   <td><%= item.text  %></td>
-                  <td><button type="button" class="btn btn-danger">Delete</button></td>
+                  <td>
+                      <form style="display:inline" action="/<%= item.id %>/delete" method="DELETE">
+                          <button class="btn btn-danger"> Delete Post </button>
+                      </form>
+                  </td>
                   <td scope="row">
                     <form>
                       <div class="form-group">

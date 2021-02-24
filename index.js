@@ -27,4 +27,12 @@ app.post("/", async function(req,res){
       res.redirect("/");
     })
 })
+app.get("/:id/delete", function(req,res){
+  const _id = req.params.id;
+  const q = `DELETE FROM todos WHERE id = ${_id}`
+  connection.query(q, (err,results,fields) => {
+      if(err) throw (err);
+      res.redirect("/");
+  })
+})
 app.listen(3000, () => console.log("Server is running"));
